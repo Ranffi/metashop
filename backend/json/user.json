@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Javier",
+    "email": "javier@test.com",
+    "password": "drowssap",
+    "isAdmin": false
+  },
+  {
+    "name": "Jazmin",
+    "email": "jazmin@test.com",
+    "password": "yup",
+    "isAdmin": true
+  },
+  {
+    "name": "Anderson",
+    "email": "anderson@test.com",
+    "password": "idominican",
+    "isAdmin": true
+  },
+  {
+    "name": "Ranffi",
+    "email": "ranffi@test.com",
+    "password": "soyranffi",
+    "isAdmin": false
+  }
+]
