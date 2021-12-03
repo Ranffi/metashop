@@ -1,3 +1,4 @@
+const {Cart, Category, Item, User} = require('./models')
 const express = require("express");
 const app = express();
 // const { body, validationResult } = require("express-validator");
