@@ -1,18 +1,18 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 
-// import navbar from './navbar'
+import Navbar from './Navbar'
 // import homePage from './homePage'
 // import homePage from './cartPage'
 
 const Router = () => {
     return (
         <>
-            <navbar />
-            <Switch>
-                <Route exact path='/' component={homePage} />
-                <Route exact path='/cart' component={cartPage} />
-            </Switch>
+            <Navbar />
+            <Routes>
+                {/* <Route path='/' element={<homePage/>} />
+                <Route path='/cart' element={<cartPage/>} /> */}
+            </Routes>
         </>
     );
 }
