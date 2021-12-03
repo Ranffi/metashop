@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 // const { body, validationResult } = require("express-validator");
-const PORT = 3000;
+const PORT = 3001;
 
 const seed = require("./seed");
 
