@@ -1,6 +1,7 @@
 import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import history from "./history";
@@ -8,9 +9,11 @@ import App from "./components/App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter history={history}>
-      <App />
-    </BrowserRouter>
+    <ChakraProvider>
+      <BrowserRouter history={history}>
+        <App />
+      </BrowserRouter>
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
