@@ -1,7 +1,7 @@
 Components:
 
-Index.js
-    - App
+Index.js (Jazmin)
+    - App (Jazmin)
         - Router (Jazmin)
         - Navbar (Javier)
             - Logo image (when clicked brings you to homepage), shopping cart, Log In 
