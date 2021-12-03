@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Button from './Button';
 import axios from 'axios';
 const url = "http://localhost:3001";
 
@@ -29,6 +30,7 @@ class Items extends Component {
                   <img src={item.image}/>
                   <p>{item.description}</p>
                   <h3>{item.price}</h3>
+                  <Button />
                   </div>
                  )
                 }
