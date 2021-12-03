@@ -19,7 +19,7 @@ class Button extends Component {
         return (
             <div>
                 <button className={"button"} onClick={this.handleClick}>
-                    this.buttonName()
+                    {this.buttonName()}
                 </button>
             </div>
         );
