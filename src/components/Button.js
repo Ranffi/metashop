@@ -11,6 +11,10 @@ class Button extends Component {
         })
     }
 
+    // handleSubmit = e => {
+        // when submitted, it should either add to cart or remove from cart
+    // }
+
     buttonName = () => {
         return this.state.isAddedToCart ? "Remove From Cart" : "Add To Cart"
     }
