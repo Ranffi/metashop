@@ -55,16 +55,6 @@ class Homepage extends Component {
                               <Badge borderRadius='full' px='2' colorScheme='teal'>
                                 New
                               </Badge>
-                              <Box
-                                color='#4a4e69'
-                                fontWeight='semibold'
-                                letterSpacing='wide'
-                                fontSize='xs'
-                                textTransform='uppercase'
-                                ml='2'
-                              >
-                                {category.name} beds &bull; {category.name} baths
-                              </Box>
                             </Box>
                     
                             <Box
