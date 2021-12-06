@@ -1,6 +1,8 @@
 const {Cart, Category, Item, User} = require('./models')
 const express = require("express");
 const app = express();
+var cors = require('cors')
+
 // const { body, validationResult } = require("express-validator");
 const PORT = 3001;
 
@@ -9,6 +11,7 @@ const seed = require("./seed");
 app.use(express.json());
 require("./models");
 
+app.use(cors())
 //invoke our seed function
 seed();
 
