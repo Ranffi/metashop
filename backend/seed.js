@@ -53,7 +53,7 @@ const seed = async () => {
     description:
       "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
     image: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
-    CategoryId: 1,
+    CategoryId: 2,
   });
 
   await jin.addItems(item);
