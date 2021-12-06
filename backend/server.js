@@ -18,7 +18,19 @@ app.get('/categories', async(req, res, next) => {
   try {
     const categories = await Category.findAll()
     res.send(categories)
-    console.log('we hit this route from the frontend')
+  } catch(err) {
+    next(err)
+  }
+})
+
+app.get('/categories/:id/items', async(req, res, next) => {
+  try {
+    const itemsInCategory = await Item.findAll({
+      where: {
+        CategoryId : req.params.id
+      }
+    })
+    res.send(itemsInCategory)
   } catch(err) {
     next(err)
   }
