@@ -24,6 +24,7 @@ yarn-error.log*
 
 metashop.sqlite
 
+
 .env
 
 secret.js
