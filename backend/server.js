@@ -1,11 +1,11 @@
 const { Category, Item, User } = require("./models");
 const express = require("express");
 const app = express();
-var cors = require("cors");
+const cors = require('cors')
 
 // const { body, validationResult } = require("express-validator");
 const PORT = 3001;
-
+app.use(cors())
 const seed = require("./seed");
 
 app.use(express.json());
@@ -14,6 +14,7 @@ require("./models");
 app.use(cors());
 //invoke our seed function
 seed();
+
 
 // GET User
 app.get("/user/:id", async (req, res, next) => {
@@ -27,6 +28,29 @@ app.get("/user/:id", async (req, res, next) => {
 
   res.send(user);
 });
+
+app.get('/categories', async(req, res, next) => {
+  try {
+    const categories = await Category.findAll()
+    res.send(categories)
+  } catch(err) {
+    next(err)
+  }
+})
+
+app.get('/categories/:id/items', async(req, res, next) => {
+  try {
+    const itemsInCategory = await Item.findAll({
+      where: {
+        CategoryId : req.params.id
+      }
+    })
+    res.send(itemsInCategory)
+  } catch(err) {
+    next(err)
+  }
+})
+
 
 // GET items
 app.get("/items", async (req, res, next) => {
