@@ -23,7 +23,7 @@ const Router = ({isLoggedin, signOut}) => {
                         {/* <Route path='/cart' element={<cartPage/>} /> */}
                         {/* <Route path='/' element={<homePage/>} />
                         <Route path='/cart' element={<cartPage/>} /> */}
-                        <Route path="/items" element={<Items />} />
+                        <Route path="/categories/:id/items" element={<Items />} />
                     </Routes>
                     <span onClick={signOut}>
                         <a href="http://localhost:3000/#">Sign out</a>

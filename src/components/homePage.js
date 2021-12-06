@@ -36,8 +36,7 @@ class Homepage extends Component {
               <>
 
                 <Box w='50%' >
-                  {/* <Link to={`/category/${category.id}/items`}> */}
-                  <Link to={`/items`}>
+                  <Link to={`/categories/${category.id}/items`} key={category.id}> 
                     <Box
                       maxW='sm'
                       borderWidth='1px'
