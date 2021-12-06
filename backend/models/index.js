@@ -18,13 +18,10 @@ Item has many ShoppingCart through Order
 
 */
 
-User.hasOne(Cart);
-Cart.belongsTo(User);
+User.belongsToMany(Item, { through: Cart });
+Item.belongsToMany(User, { through: Cart });
 
 Category.hasMany(Item);
 Item.belongsTo(Category);
-
-Cart.belongsToMany(Item, { through: "Order" });
-Item.belongsToMany(Cart, { through: "Order" });
 
 module.exports = { Cart, Category, Item, User };
