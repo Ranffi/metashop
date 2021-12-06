@@ -1,7 +1,7 @@
 const { Category, Item, User } = require("./models");
 const express = require("express");
 const app = express();
-var cors = require('cors')
+var cors = require("cors");
 
 // const { body, validationResult } = require("express-validator");
 const PORT = 3001;
@@ -11,9 +11,22 @@ const seed = require("./seed");
 app.use(express.json());
 require("./models");
 
-app.use(cors())
+app.use(cors());
 //invoke our seed function
 seed();
+
+// GET User
+app.get("/user/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  const user = await User.findOne({
+    where: {
+      id: id,
+    },
+  });
+
+  res.send(user);
+});
 
 // GET items
 app.get("/items", async (req, res, next) => {
