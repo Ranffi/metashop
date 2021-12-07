@@ -11,6 +11,7 @@ class Items extends Component {
       this.state = {
         items: []
       }
+      this.handleCreate = this.handleCreate.bind(this)
     }
     componentDidMount(){
       axios.get(`${url}/categories/${window.location.pathname.split('/')[2]}/items`)
@@ -19,6 +20,25 @@ class Items extends Component {
       })
       
     }
+    handleCreate(event){
+      event.preventDefault()
+      const title = event.target.titleOfItem.value
+      const imageUrl = event.target.imageOfItem.value
+      const description = event.target.descriptionOfItem.value
+      const price = event.target.priceOfItem.value
+     
+      axios.post(`${url}/items`,{
+        title,
+        imageUrl,
+        description,
+        price,
+      })
+      .then(res => {
+          this.setState({items: [ ...this.state.items, res.data]});
+        })  
+      
+    }
+
     render() {
         return (
           <>
@@ -47,6 +67,48 @@ class Items extends Component {
                 )
               }
             </SimpleGrid>
+            <div>
+                <h1>Add Item</h1>
+            <form onSubmit={this.handleCreate}>
+                  <label>
+                    Title of Item: 
+                    <input
+                      type="text"
+                      name="titleOfItem"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+
+                  <label>
+                    Image of Item: 
+                    <input
+                      type="text"
+                      name="imageOfItem"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+
+                  <label>
+                    Description of Item: 
+                    <input
+                      type="text"
+                      name="descriptionOfItem"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+
+                  <label>
+                    Price of Item: 
+                    <input
+                      type="text"
+                      name="priceOfItem"
+                      onChange={this.handleChange}
+                    />
+                  </label>
+
+                  <button type="submit">Submit</button>
+                </form>
+            </div>
           </>
         )
         }
