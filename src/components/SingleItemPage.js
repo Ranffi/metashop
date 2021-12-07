@@ -63,14 +63,11 @@ class SingleItem extends Component {
                   {item.description}
                 </Flex>
                 <br />
-                  <Box fontSize="2xl" color="#4A4E69">
-                    <Box as="span" color={'gray.600'} fontSize="lg">
-                      £ 
-                    </Box>
-                    {item.price}
+                  <Box fontSize="2xl" color="white">
+                    ${item.price}
                   </Box>
                 <br />
-                  <Box><Button /></Box>
+                  <Box color="white"><Button /></Box>
               </Box>
             </Box>
           </Flex>
@@ -80,8 +77,3 @@ class SingleItem extends Component {
   }
   
   export default SingleItem
-  
-  {/* <h1>{item.title}</h1>
-  <img src={item.image}/>
-  <p>{item.description}</p>
-  <h2>{item.price}</h2> */}
