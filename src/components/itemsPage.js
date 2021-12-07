@@ -39,7 +39,6 @@ class Items extends Component {
                       borderRadius="0.5em"
                       marginBottom="5"
                     />
-                  <p>{item.description}</p>
                   <h3>${item.price}</h3>
                   <Button color="#22223b"/>
                   </Flex>
@@ -48,50 +47,7 @@ class Items extends Component {
                 )
               }
             </SimpleGrid>
-          {/* <Flex>
-          <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-          {
-                this.state.items.map(item =>{
-                 return (
-                   
-                  <div key={item.id}>
-                  <Box bg='pink' w='100%' p={4} color='white'>
-                  <h1>{item.title}</h1>
-                  <img src={item.image}/>
-                  <p>{item.description}</p>
-                  <h3>{item.price}</h3>
-                  <Box as='button' borderRadius='md' bg='green' color='white' px={4} h={8}>
-                  <Button />
-                  </Box>
-                  <Spacer />
-                  </Box>
-                  
-                  </div>
-                 )
-                }
-                )
-                }
-              
-          </Box>
-          </Flex> */}
           </>
-            // <div>
-            //   <h1> Categories... </h1>
-            //   {
-            //     this.state.items.map(item =>{
-            //      return (
-            //       <div key={item.id}>
-            //       <h1>{item.title}</h1>
-            //       <img src={item.image}/>
-            //       <p>{item.description}</p>
-            //       <h3>{item.price}</h3>
-            //       <Button />
-            //       </div>
-            //      )
-            //     }
-            //     )
-            //   }
-            // </div>
         )
         }
 }
