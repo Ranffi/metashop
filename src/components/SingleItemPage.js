@@ -1,16 +1,7 @@
 import React, {Component} from 'react'
 import Button from './Button'
 import axios from 'axios';
-import {
-  Flex,
-  Circle,
-  Box,
-  Image,
-  Badge,
-  Icon,
-  chakra,
-  Tooltip,
-} from '@chakra-ui/react';
+import {Flex, Box, Image,} from '@chakra-ui/react';
 
 const url = "http://localhost:3001";
 
@@ -25,51 +16,48 @@ class SingleItem extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
-componentDidMount(){
-    axios.get(`${url}/items/${window.location.pathname.split('/')[2]}`)
-    .then(res => {
-      this.setState({item: res.data});
-    })        
-}
-
-onDelete(){
-    axios.delete(`${url}/items/${window.location.pathname.split('/')[2]}`)
-    .then(res => {
+  componentDidMount(){
+      axios.get(`${url}/items/${window.location.pathname.split('/')[2]}`)
+      .then(res => {
         this.setState({item: res.data});
-      }) 
-}
+      })        
+  }
 
-handleUpdate(event){
-    event.preventDefault()
-    const title = event.target.titleOfItem.value
-    const imageUrl = event.target.imageOfItem.value
-    const description = event.target.descriptionOfItem.value
-    const price = event.target.priceOfItem.value
-   
-    axios.put(`${url}/items/${window.location.pathname.split('/')[2]}`,{
-      title,
-      imageUrl,
-      description,
-      price,
-    })
-    .then(res => {
-        this.setState({item: res.data});
-      })  
-}
+  onDelete(){
+      axios.delete(`${url}/items/${window.location.pathname.split('/')[2]}`)
+      .then(res => {
+          this.setState({item: res.data});
+        }) 
+  }
 
-handleChange(event){
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-}
+  handleUpdate(event){
+      event.preventDefault()
+      const title = event.target.titleOfItem.value
+      const imageUrl = event.target.imageOfItem.value
+      const description = event.target.descriptionOfItem.value
+      const price = event.target.priceOfItem.value
+    
+      axios.put(`${url}/items/${window.location.pathname.split('/')[2]}`,{
+        title,
+        imageUrl,
+        description,
+        price,
+      })
+      .then(res => {
+          this.setState({item: res.data});
+        })  
+  }
 
+  handleChange(event){
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+  }
 
   render(){
       const item = this.state.item
       return(
         <div>
-
           <div>
             <Flex p={50} w="full" alignItems="center" justifyContent="center">
             <Box
