@@ -101,9 +101,13 @@ app.post("/items", async (req, res, next) => {
 //PUT/Update item
 app.put("/items/:itemId", async (req, res, next) => {
   try {
-    const item = await Item.findByPk(req.params.itemId);
-    const updatedItem = await item.update(req.body);
-    res.json(updatedItem);
+    let updatedInfo = req.body
+    const updatedItem = await Item.update(updatedInfo,{   
+      where: {
+        id: req.params.itemId,
+      }}
+      );
+    res.send(updatedItem);
   } catch (error) {
     next(error);
   }
@@ -114,7 +118,7 @@ app.delete("/items/:itemId", async (req, res, next) => {
   try {
     const item = await Item.findByPk(req.params.itemId);
     const destroyedItem = await item.destroy();
-    res.json(destroyedItem);
+    res.redirect("/items")
   } catch (error) {
     next(error);
   }
