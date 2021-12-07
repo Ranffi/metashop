@@ -29,7 +29,6 @@ const seed = async () => {
     Category.create(category)
   );
   const itemPromises = itemData.map((item) => Item.create(item));
-  const userPromises = userData.map((user) => User.create(user));
 
   const jin = await User.create({
     name: "Jin",
@@ -58,6 +57,16 @@ const seed = async () => {
 
   await jin.addItems(item);
   await jin.addItems(item2);
+
+  const userPromises = userData.map(async (user) => {
+    const createdUser = await User.create(user);
+
+    if (user.name === "Javier") {
+      createdUser.addItems(item);
+    }
+
+    return createdUser;
+  });
 
   await Promise.all(categoryPromises);
   await Promise.all(itemPromises);

@@ -1,9 +1,8 @@
-import React, {Component} from 'react'
-import Button from './Button';
-import axios from 'axios';
-import { Box,SimpleGrid,Image,Text,Container,Flex } from '@chakra-ui/react'
+import React, { Component } from "react";
+import Button from "./Button";
+import axios from "axios";
+import { Box, SimpleGrid, Image, Text, Flex } from "@chakra-ui/react";
 const url = "http://localhost:3001";
-
 
 class Items extends Component {
     constructor(props) {

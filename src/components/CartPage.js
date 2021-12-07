@@ -26,8 +26,9 @@ class CartPage extends Component {
   };
 
   async componentDidMount() {
-    const user = await axios.get(`${url}/user/5/cart`); //Figure out how to get corresponding user
-    this.setState({ itemsInCart: [...user.data.Items] });
+    const cart = await axios.get(`${url}/user/${this.props.userEmail}/cart`);
+
+    this.setState({ itemsInCart: [...cart.data.Items] });
 
     let total = this.state.totalPrice;
 

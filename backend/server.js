@@ -1,11 +1,11 @@
 const { Category, Item, User } = require("./models");
 const express = require("express");
 const app = express();
-const cors = require('cors')
+const cors = require("cors");
 
 // const { body, validationResult } = require("express-validator");
 const PORT = 3001;
-app.use(cors())
+app.use(cors());
 const seed = require("./seed");
 
 app.use(express.json());
@@ -15,42 +15,40 @@ app.use(cors());
 //invoke our seed function
 seed();
 
-
 // GET User
-app.get("/user/:id", async (req, res, next) => {
-  const id = req.params.id;
+app.get("/user/:email", async (req, res, next) => {
+  const email = req.params.email;
 
   const user = await User.findOne({
     where: {
-      id: id,
+      email: email,
     },
   });
 
   res.send(user);
 });
 
-app.get('/categories', async(req, res, next) => {
+app.get("/categories", async (req, res, next) => {
   try {
-    const categories = await Category.findAll()
-    res.send(categories)
-  } catch(err) {
-    next(err)
+    const categories = await Category.findAll();
+    res.send(categories);
+  } catch (err) {
+    next(err);
   }
-})
+});
 
-app.get('/categories/:id/items', async(req, res, next) => {
+app.get("/categories/:id/items", async (req, res, next) => {
   try {
     const itemsInCategory = await Item.findAll({
       where: {
-        CategoryId : req.params.id
-      }
-    })
-    res.send(itemsInCategory)
-  } catch(err) {
-    next(err)
+        CategoryId: req.params.id,
+      },
+    });
+    res.send(itemsInCategory);
+  } catch (err) {
+    next(err);
   }
-})
-
+});
 
 // GET items
 app.get("/items", async (req, res, next) => {
@@ -73,13 +71,13 @@ app.get("/items/:itemId", async (req, res, next) => {
 });
 
 // GET cart
-app.get("/user/:id/cart", async (req, res, next) => {
-  const id = req.params.id;
+app.get("/user/:email/cart", async (req, res, next) => {
+  const email = req.params.email;
 
   try {
     const cart = await User.findOne({
       where: {
-        id: id,
+        email: email,
       },
       include: [Item],
     });
