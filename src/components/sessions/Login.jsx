@@ -40,7 +40,7 @@ const Login = () => {
         <Stack align={"center"}>
           <Heading fontSize={"4xl"}>Login into Metashop</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our our sister in laws product ✌️
+            to enjoy all of our our sister in law's products ✌️
           </Text>
         </Stack>
         <Box
