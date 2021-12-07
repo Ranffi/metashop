@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Box, Badge, Flex } from "@chakra-ui/react";
 
-class Homepage extends Component {
+class HomePage extends Component {
   constructor() {
     super();
     this.state = {
@@ -32,50 +32,45 @@ class Homepage extends Component {
         <Flex ml="15%" wrap="wrap" mt="20px">
           {categories.map((category) => {
             return (
-              <>
-                <Box w="50%" key={category.id}>
-                  <Link
-                    to={`/categories/${category.id}/items`}
-                    key={category.id}
+              <Box w="50%" key={category.id}>
+                <Link to={`/categories/${category.id}/items`} key={category.id}>
+                  <Box
+                    maxW="sm"
+                    borderWidth="1px"
+                    borderRadius="lg"
+                    p="50px"
+                    m="25px"
+                    overflow="hidden"
+                    bgImage={category.image}
+                    bgPosition="center"
+                    bgSize="cover"
+                    bgRepeat="no-repeat"
+                    _hover={{
+                      shadow: "2px 2px #9a8c98",
+                      color: "teal.500",
+                      cursor: "pointer",
+                    }}
                   >
-                    <Box
-                      maxW="sm"
-                      borderWidth="1px"
-                      borderRadius="lg"
-                      p="50px"
-                      m="25px"
-                      overflow="hidden"
-                      bgImage={category.image}
-                      bgPosition="center"
-                      bgSize="cover"
-                      bgRepeat="no-repeat"
-                      _hover={{
-                        shadow: "2px 2px #9a8c98",
-                        color: "teal.500",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <Box p="6">
-                        <Box display="flex" alignItems="baseline">
-                          <Badge borderRadius="full" px="2" colorScheme="teal">
-                            New
-                          </Badge>
-                        </Box>
+                    <Box p="6">
+                      <Box display="flex" alignItems="baseline">
+                        <Badge borderRadius="full" px="2" colorScheme="teal">
+                          New
+                        </Badge>
+                      </Box>
 
-                        <Box
-                          mt="1"
-                          fontWeight="semibold"
-                          as="h4"
-                          lineHeight="tight"
-                          isTruncated
-                        >
-                          {category.name}
-                        </Box>
+                      <Box
+                        mt="1"
+                        fontWeight="semibold"
+                        as="h4"
+                        lineHeight="tight"
+                        isTruncated
+                      >
+                        {category.name}
                       </Box>
                     </Box>
-                  </Link>
-                </Box>
-              </>
+                  </Box>
+                </Link>
+              </Box>
             );
           })}
         </Flex>
@@ -84,4 +79,4 @@ class Homepage extends Component {
   }
 }
 
-export default Homepage;
+export default HomePage;
