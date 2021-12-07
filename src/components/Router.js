@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
-import Items from "./itemsPage";
-import Homepage from "./homePage";
+import Items from "./ItemsPage";
+import Homepage from "./HomePage";
 import Login from "./sessions/Login";
 import CartPage from "./CartPage";
 
