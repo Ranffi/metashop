@@ -5,6 +5,7 @@ import Items from "./ItemsPage";
 import HomePage from "./HomePage";
 import Login from "./sessions/Login";
 import CartPage from "./CartPage";
+import SingleItem from "./SingleItemPage";
 
 const Router = ({ isLoggedin, signOut, userEmail }) => {
   return (
@@ -24,6 +25,7 @@ const Router = ({ isLoggedin, signOut, userEmail }) => {
             <Route path="/" element={<HomePage />} />
             <Route path="/cart" element={<CartPage userEmail={userEmail} />} />
             <Route path="/categories/:id/items" element={<Items />} />
+            <Route path="/items/:id" element={<SingleItem />} />
           </Routes>
         </>
       )}
