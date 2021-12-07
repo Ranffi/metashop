@@ -1,24 +1,22 @@
-
-import React, {Component, useState} from 'react'
-import Router from './Router'
-import fire from '../fire'
-
+import React, { useState } from "react";
+import Router from "./Router";
+import fire from "../fire";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
   fire.auth().onAuthStateChanged((user) => {
-      return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
+    return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
   });
 
   const signOut = () => {
-    fire.auth().signOut()
+    fire.auth().signOut();
   };
 
-  console.log('logged in?', isLoggedIn)
+  // console.log("logged in?", isLoggedIn);
   return (
     <div className="App">
-      <Router isLoggedin={isLoggedIn} signOut={signOut}/>
+      <Router isLoggedin={isLoggedIn} signOut={signOut} />
     </div>
   );
 }
