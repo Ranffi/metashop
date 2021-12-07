@@ -1,10 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
-import Items from "./ItemsPage";
+import Items from "./itemsPage";
 import Homepage from "./HomePage";
 import Login from "./sessions/Login";
 import CartPage from "./CartPage";
+import SingleItem from "./singleItemPage";
 
 const Router = ({ isLoggedin, signOut }) => {
   return (
@@ -25,6 +26,7 @@ const Router = ({ isLoggedin, signOut }) => {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/" element={<homePage />} />
             <Route path="/categories/:id/items" element={<Items />} />
+            <Route path="/items/:id" element={<SingleItem />} />
           </Routes>
         </>
       )}
