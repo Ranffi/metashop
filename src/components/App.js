@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Router from "./Router";
 import fire from "../fire";
+import { useColorModeValue, Box } from "@chakra-ui/react";
 const url = "http://localhost:3001";
 
 function App() {
@@ -19,9 +20,9 @@ function App() {
 
   // console.log("logged in?", isLoggedIn);
   return (
-    <div className="App">
-      <Router isLoggedin={isLoggedIn} signOut={signOut} userEmail={userEmail}/>
-    </div>
+    <Box className="App">
+      <Router isLoggedin={isLoggedIn} signOut={signOut} userEmail={userEmail} />
+    </Box>
   );
 }
 

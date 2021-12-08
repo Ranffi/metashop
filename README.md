@@ -4,16 +4,16 @@
 
 - [x] The application must support at least 4 categories; electronics, jewelery, men's clothing, women's clothing
 - [x] The application must display as a minimum, an image, price and description of each item
-- [ ] The application must allow for items to be added to a shopping cart
-- [ ] The application must allow for items to be deleted from a shopping cart
-- [ ] The shopping cart must persist its state when the browser is closed
+- [x] The application must allow for items to be added to a shopping cart
+- [x] The application must allow for items to be deleted from a shopping cart
+- [x] The shopping cart must persist its state when the browser is closed
 - [x] The application must work well on a mobile as well as a desktop device
 
 ##### Optional
 
-- [ ] The application should support an admin interface to allow for new items to be uploaded for sale
-- [ ] The application should support an admin interface to allow for item descriptions to be updated
-- [ ] The application should support an admin interface to allow for items to be removed from sale
+- [x] The application should support an admin interface to allow for new items to be uploaded for sale
+- [x] The application should support an admin interface to allow for item descriptions to be updated
+- [x] The application should support an admin interface to allow for items to be removed from sale
 
 ## Tools and Frameworks
 

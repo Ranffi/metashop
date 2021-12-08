@@ -98,15 +98,37 @@ app.post("/items", async (req, res, next) => {
   }
 });
 
+// PUT: ADD TO CART
+app.put("/items/:id/user/:email/cart", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const email = req.params.email;
+
+    const user = await User.findOne({
+      where: {
+        email: email,
+      },
+    });
+
+    const item = await Item.findByPk(id);
+
+    user.addItems(item);
+
+    res.send(200);
+  } catch (error) {
+    console.log("Issue with adding item to cart");
+  }
+});
+
 //PUT/Update item
 app.put("/items/:itemId", async (req, res, next) => {
   try {
-    let updatedInfo = req.body
-    const updatedItem = await Item.update(updatedInfo,{   
+    let updatedInfo = req.body;
+    const updatedItem = await Item.update(updatedInfo, {
       where: {
         id: req.params.itemId,
-      }}
-      );
+      },
+    });
     res.send(updatedItem);
   } catch (error) {
     next(error);
@@ -118,10 +140,28 @@ app.delete("/items/:itemId", async (req, res, next) => {
   try {
     const item = await Item.findByPk(req.params.itemId);
     const destroyedItem = await item.destroy();
-    res.redirect("/items")
+    res.redirect("/items");
   } catch (error) {
     next(error);
   }
+});
+
+// DELETE remove from cart
+app.delete("/items/:id/user/:email/cart", async (req, res, next) => {
+  const id = req.params.id;
+  const email = req.params.email;
+
+  const user = await User.findOne({
+    where: {
+      email: email,
+    },
+  });
+
+  const item = await Item.findByPk(id);
+
+  user.removeItems(item);
+  console.log("REMOVED");
+  res.send(200);
 });
 
 app.listen(PORT, () => {
