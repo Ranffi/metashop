@@ -20,7 +20,7 @@ function App() {
 
   // console.log("logged in?", isLoggedIn);
   return (
-    <Box bg={useColorModeValue("#F2E9E4", "#22223B")} Name="App">
+    <Box bg={useColorModeValue("#F2E9E4", null)} Name="App">
       <Router isLoggedin={isLoggedIn} signOut={signOut} userEmail={userEmail} />
     </Box>
   );
