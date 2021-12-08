@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "./Button";
+import Item from "./Item"
 import axios from "axios";
 import { Flex, Box, Image, Center, Container } from "@chakra-ui/react";
 
@@ -70,75 +71,7 @@ class SingleItem extends Component {
       <div>
         {this.state.user.isAdmin ? (
           <div>
-            <div>
-              <Flex p={50} w="full" alignItems="center" justifyContent="center">
-                <Box
-                  bg="#4A4E69"
-                  maxW="sm"
-                  borderWidth="1px"
-                  rounded="lg"
-                  shadow="lg"
-                  position="relative"
-                >
-                  <Container>
-                  <button onClick={this.onDelete}>
-                      X
-                    </button>
-                    <Center>
-                      <Image
-                        src={item.image}
-                        alt={`Picture of ${item.image}`}
-                        roundedTop="lg"
-                        boxSize="15em"
-                        objectFit="fill"
-                        borderRadius="0.5em"
-                        marginBottom="5"
-                        marginTop="5"
-                        alignSelf="center"
-                      />
-                    </Center>
-                  </Container>
-                  <Box p="6">
-                    <Flex
-                      mt="1"
-                      justifyContent="space-between"
-                      alignContent="center"
-                    >
-                      <Box
-                        fontSize="2xl"
-                        fontWeight="semibold"
-                        as="h4"
-                        lineHeight="tight"
-                        isTruncated
-                        color="white"
-                      >
-                        {item.title}
-                      </Box>
-                    </Flex>
-
-                    <Flex
-                      justifyContent="space-between"
-                      alignContent="center"
-                      color="white"
-                    >
-                      {item.description}
-                    </Flex>
-                    <br />
-                    <Box fontSize="2xl" color="white">
-                      {`$${item.price}`}
-                    </Box>
-                    <br />
-                    <Box color="white">
-                    <Button
-                    itemId={window.location.pathname.split("/")[2]}
-                    userEmail={this.props.userEmail}
-                  />
-                    </Box>
-                  </Box>
-                </Box>
-              </Flex>
-            </div>
-
+              <Item item={item} onDelete={this.onDelete}/>
             <Flex p={50} w="full" alignItems="center" justifyContent="center">
               <Box>
                 <h1>Update Item</h1>
@@ -192,72 +125,7 @@ class SingleItem extends Component {
             </Flex>
           </div>
         ) : (
-          <div>
-            <Flex p={50} w="full" alignItems="center" justifyContent="center">
-              <Box
-                bg="#4A4E69"
-                maxW="sm"
-                borderWidth="1px"
-                rounded="lg"
-                shadow="lg"
-                position="relative"
-              >
-                <Container>
-                  <Center>
-                    <Image
-                      src={item.image}
-                      alt={`Picture of ${item.image}`}
-                      roundedTop="lg"
-                      boxSize="15em"
-                      objectFit="fill"
-                      borderRadius="0.5em"
-                      marginBottom="5"
-                      marginTop="5"
-                      alignSelf="center"
-                    />
-                  </Center>
-                </Container>
-
-                <Box p="6">
-                  <Flex
-                    mt="1"
-                    justifyContent="space-between"
-                    alignContent="center"
-                  >
-                    <Box
-                      fontSize="2xl"
-                      fontWeight="semibold"
-                      as="h4"
-                      lineHeight="tight"
-                      isTruncated
-                      color="white"
-                    >
-                      {item.title}
-                    </Box>
-                  </Flex>
-
-                  <Flex
-                    justifyContent="space-between"
-                    alignContent="center"
-                    color="white"
-                  >
-                    {item.description}
-                  </Flex>
-                  <br />
-                  <Box fontSize="2xl" color="white">
-                    {`$${item.price}`}
-                  </Box>
-                  <br />
-                  <Box color="white">
-                    <Button
-                      itemId={window.location.pathname.split("/")[2]}
-                      userEmail={this.props.userEmail}
-                    />
-                  </Box>
-                </Box>
-              </Box>
-            </Flex>
-          </div>
+          <Item item={item} onDelete={this.onDelete}/>
         )}
       </div>
     );
