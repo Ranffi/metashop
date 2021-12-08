@@ -66,7 +66,7 @@ const Item = (props) => {
 
                         <Box color="white">
                             <Button
-                                itemId={window.location.pathname.split("/")[2]}
+                                itemId={props.item.id}
                                 userEmail={props.userEmail}
                             />
                         </Box>

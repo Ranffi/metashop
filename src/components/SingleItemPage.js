@@ -54,7 +54,6 @@ class SingleItem extends Component {
   };
 
   handleChange = (event) => {
-    console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -71,7 +70,7 @@ class SingleItem extends Component {
       <div>
         {this.state.user.isAdmin ? (
           <div>
-              <Item item={item} onDelete={this.onDelete}/>
+              <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
             <Flex p={50} w="full" alignItems="center" justifyContent="center">
               <Box>
                 <h1>Update Item</h1>
@@ -125,7 +124,7 @@ class SingleItem extends Component {
             </Flex>
           </div>
         ) : (
-          <Item item={item} onDelete={this.onDelete}/>
+          <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
         )}
       </div>
     );
