@@ -7,6 +7,7 @@ import {
   useColorModeValue,
   Stack,
   useColorMode,
+  Text
 } from "@chakra-ui/react";
 
 import { FaSun, FaMoon, FaShoppingCart } from "react-icons/fa";
@@ -19,7 +20,7 @@ export default function Nav(props) {
       <Box bg={useColorModeValue("#c9ada7", "#22223B")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Link to={"/"}>
-            <Box>∞ Metashop</Box>
+            <Box><Text fontSize={["xl", "3xl"]}>∞ Metashop</Text></Box>
           </Link>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
