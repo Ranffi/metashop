@@ -7,7 +7,8 @@ const url = "http://localhost:3001";
 
 class Items extends Component {
   state = {
-      items: []
+      items: [],
+      user: {}
     }
 
   componentDidMount() {
@@ -37,10 +38,18 @@ class Items extends Component {
     
   }
 
+  getUser = async() => {
+    const user = await axios.get(`${url}/user/${this.props.userEmail}`)
+    this.setState({user: user.data})
+  }
+
   render() {
     return (
       <>
-        <SimpleGrid columns={[1, null, 3]} spacing='40px'>
+      <div onClick={this.getUser()}>
+      {this.state.user.isAdmin?
+        <div>
+          <SimpleGrid columns={[1, null, 3]} spacing='40px'>
         {
           this.state.items.map(item =>{
             return (
@@ -64,7 +73,6 @@ class Items extends Component {
           })
         }
         </SimpleGrid>
-        <div>
           <h1>Add Item</h1>
           <form onSubmit={this.handleCreate}>
             <label>
@@ -106,7 +114,35 @@ class Items extends Component {
             <button type="submit">Submit</button>
           </form>
         </div>
+        :
+        <SimpleGrid columns={[1, null, 3]} spacing='40px'>
+        {
+          this.state.items.map(item =>{
+            return (
+              <Flex key={item.id} bg='#9A8C98' direction="column" borderRadius="0.5em" justify="space-around">
+                <Box marginBottom="3">
+                  <Text color="black" as='em' justify="center">{item.title}</Text>
+                </Box>
+                <Image
+                    flex="2"
+                    alignSelf="center"
+                    bg="green.500"
+                    src={item.image}
+                    boxSize="15em"
+                    borderRadius="0.5em"
+                    marginBottom="5"
+                  />
+                <h3>${item.price}</h3>
+                <Button color="#22223b"/>
+              </Flex>
+            )
+          })
+        }
+        </SimpleGrid>
+      }
+      </div>
       </>
+  
     )
   }
 }

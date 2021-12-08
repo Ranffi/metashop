@@ -8,6 +8,7 @@ const url = "http://localhost:3001";
 class SingleItem extends Component {
   state = {
     item: {},
+    user: {},
     value: ""
   }
 
@@ -50,51 +51,61 @@ class SingleItem extends Component {
       })
   }
 
+  getUser = async() => {
+    const user = await axios.get(`${url}/user/${this.props.userEmail}`)
+    this.setState({user: user.data})
+  }
+
   render() {
       const item = this.state.item
       return(
-        <div>
-            <Flex p={50} w="full" alignItems="center" justifyContent="center">
-            <Box
-              bg="#4A4E69"
-              maxW="sm"
-              borderWidth="1px"
-              rounded="lg"
-              shadow="lg"
-              position="relative">
+          <div onClick={this.getUser()}>
+        {this.state.user.isAdmin?
+        <div> 
+          <div>
+         <Flex p={50} w="full" alignItems="center" justifyContent="center">
+         <Box
+           bg="#4A4E69"
+           maxW="sm"
+           borderWidth="1px"
+           rounded="lg"
+           shadow="lg"
+           position="relative">
 
-              <Image
-                src={item.image}
-                alt={`Picture of ${item.image}`}
-                roundedTop="lg"
-                />
+           <Image
+             src={item.image}
+             alt={`Picture of ${item.image}`}
+             roundedTop="lg"
+             />
 
-              <Box p="6">
-                <Flex mt="1" justifyContent="space-between" alignContent="center">
-                  <Box
-                    fontSize="2xl"
-                    fontWeight="semibold"
-                    as="h4"
-                    lineHeight="tight"
-                    isTruncated
-                    color="white">
-                    {item.title}
-                  </Box>
-                </Flex>
+           <Box p="6">
+             <Flex mt="1" justifyContent="space-between" alignContent="center">
+               <Box
+                 fontSize="2xl"
+                 fontWeight="semibold"
+                 as="h4"
+                 lineHeight="tight"
+                 isTruncated
+                 color="white">
+                 {item.title}
+               </Box>
+             </Flex>
 
-                <Flex justifyContent="space-between" alignContent="center" color="white">
-                  {item.description}
-                </Flex>
-                <br />
-                  <Box fontSize="2xl" color="white">
-                    ${item.price}
-                  </Box>
-                <br />
-                  <Box color="white"><Button /></Box>
-              </Box>
-            </Box>
-          </Flex>    
-          <Flex p={50} w="full" alignItems="center" justifyContent="center">      
+             <Flex justifyContent="space-between" alignContent="center" color="white">
+               {item.description}
+             </Flex>
+             <br />
+               <Box fontSize="2xl" color="white">
+                 ${item.price}
+               </Box>
+             <br />
+               <Box color="white"><Button /></Box>
+           </Box>
+         </Box>
+       </Flex>
+       </div>
+      
+       <Flex p={50} w="full" alignItems="center" justifyContent="center">      
             <Box>
               <h1>Update Item</h1>
               <form onSubmit={this.handleUpdate}>
@@ -145,9 +156,55 @@ class SingleItem extends Component {
               </form>
             </Box>
           </Flex>
-        </div>
-      )
-    }
-  }
 
+       </div>
+          :
+        <div>
+            <Flex p={50} w="full" alignItems="center" justifyContent="center">
+            <Box
+              bg="#4A4E69"
+              maxW="sm"
+              borderWidth="1px"
+              rounded="lg"
+              shadow="lg"
+              position="relative">
+
+              <Image
+                src={item.image}
+                alt={`Picture of ${item.image}`}
+                roundedTop="lg"
+                />
+
+              <Box p="6">
+                <Flex mt="1" justifyContent="space-between" alignContent="center">
+                  <Box
+                    fontSize="2xl"
+                    fontWeight="semibold"
+                    as="h4"
+                    lineHeight="tight"
+                    isTruncated
+                    color="white">
+                    {item.title}
+                  </Box>
+                </Flex>
+
+                <Flex justifyContent="space-between" alignContent="center" color="white">
+                  {item.description}
+                </Flex>
+                <br />
+                  <Box fontSize="2xl" color="white">
+                    ${item.price}
+                  </Box>
+                <br />
+                  <Box color="white"><Button /></Box>
+              </Box>
+            </Box>
+          </Flex>
+          </div>
+  
+  }
+  </div>
+      )
+}
+}
   export default SingleItem
