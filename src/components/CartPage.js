@@ -13,7 +13,7 @@ import {
   Tr,
   Td,
   Th,
-  Button,
+  Button as ChakraButton,
 } from "@chakra-ui/react";
 import { MdPayment } from "react-icons/md";
 import axios from "axios";
@@ -120,9 +120,9 @@ class CartPage extends Component {
                     marginBottom="40"
                   >{`$${this.state.totalPrice}`}</Text>
                 </Center>
-                <Button bg="#9A8C98" rightIcon={<MdPayment />}>
+                <ChakraButton bg="#9A8C98" rightIcon={<MdPayment />}>
                   Checkout
-                </Button>
+                </ChakraButton>
               </Box>
             </Center>
           </Box>

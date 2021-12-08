@@ -11,6 +11,7 @@ const Router = ({ isLoggedin, signOut, userEmail }) => {
   return (
     <>
       <Navbar signOut={signOut} isLoggedin={isLoggedin} />
+
       {!isLoggedin ? (
         <>
           <Routes>
@@ -24,8 +25,14 @@ const Router = ({ isLoggedin, signOut, userEmail }) => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/cart" element={<CartPage userEmail={userEmail} />} />
-            <Route path="/categories/:id/items" element={<Items />} />
-            <Route path="/items/:id" element={<SingleItem />} />
+            <Route
+              path="/categories/:id/items"
+              element={<Items userEmail={userEmail} />}
+            />
+            <Route
+              path="/items/:id"
+              element={<SingleItem userEmail={userEmail} />}
+            />
           </Routes>
         </>
       )}
