@@ -81,6 +81,9 @@ class SingleItem extends Component {
                   position="relative"
                 >
                   <Container>
+                  <button onClick={this.onDelete}>
+                      X
+                    </button>
                     <Center>
                       <Image
                         src={item.image}
