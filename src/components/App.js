@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Router from "./Router";
 import fire from "../fire";
 import { useColorModeValue, Box } from "@chakra-ui/react";
+const url = "http://localhost:3001";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState("");
+
 
   fire.auth().onAuthStateChanged((user) => {
     setUserEmail(user.email);

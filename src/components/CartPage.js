@@ -39,20 +39,21 @@ class CartPage extends Component {
 
   render() {
     return (
-      <Container maxW={"7xl"} p="12">
-        <Divider marginTop="5" marginBottom="20" />
+      <Container maxW={"7xl"} >
+        <Divider paddingTop="5" paddingBottom="20" />
 
         <Heading size="lg" fontSize="60px">
           Your Cart
         </Heading>
         <Box
-          marginTop={{ base: "1", sm: "5" }}
+
+          paddingTop={{ base: "1", sm: "5" }}
           display="flex"
           flexDirection={{ base: "column", sm: "row" }}
           justifyContent="space-between"
           alignItems="flex-start"
         >
-          <Box flex="4" marginRight="3" position="relative" alignItems="center">
+          <Box flex="4" paddingRight="3" position="relative" alignItems="center">
             <Table>
               <Thead>
                 <Tr>
@@ -72,7 +73,7 @@ class CartPage extends Component {
                       <Td>
                         <Image
                           src={item.image}
-                          boxSize="10em"
+                          boxSize="4em"
                           borderRadius="0.5em"
                           marginBottom="5"
                         />

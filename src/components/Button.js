@@ -15,13 +15,15 @@ class Button extends Component {
 
   async componentDidMount() {
     const cart = await axios.get(`${url}/user/${this.props.userEmail}/cart`);
+    console.log(cart)
+    if(cart.data.Items){
+        cart.data.Items.forEach((item) => {
+          if (item.id === parseInt(this.props.itemId)) {
+            this.setState({ isAddedToCart: true });
+          }
+        });
 
-    cart.data.Items.forEach((item) => {
-      if (item.id === parseInt(this.props.itemId)) {
-        this.setState({ isAddedToCart: true });
-      }
-    });
-    console.log(cart.data);
+    }
   }
 
   handleClick = async (e) => {
