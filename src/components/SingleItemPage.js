@@ -25,13 +25,11 @@ class SingleItem extends Component {
   }
 
   onDelete = () => {
-    if (window.confirm("Are you sure you want to delete the item?")) {
-      axios
-        .delete(`${url}/items/${window.location.pathname.split("/")[2]}`)
-        .then((res) => {
-          this.setState({ item: res.data });
-        });
-    }
+    axios
+      .delete(`${url}/items/${window.location.pathname.split("/")[2]}`)
+      .then((res) => {
+        this.setState({ item: res.data });
+      });
   };
 
   handleUpdate = (event) => {
@@ -67,12 +65,13 @@ class SingleItem extends Component {
       <Box>
         {this.state.user.isAdmin ? (
           <Box>
-            <SimpleGrid columns={[1, null, 4]}>
+            <SimpleGrid columns={[1, null, 2]}>
               <Item
                 item={item}
                 userEmail={this.props.userEmail}
                 user={this.state.user}
                 onDelete={this.onDelete}
+                page={"Single Item Page"}
               />
               <Form
                 submission={this.handleUpdate}
@@ -87,6 +86,7 @@ class SingleItem extends Component {
             userEmail={this.props.userEmail}
             user={this.state.user}
             onDelete={this.onDelete}
+            page={"Single Item Page"}
           />
         )}
       </Box>

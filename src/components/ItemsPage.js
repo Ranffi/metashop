@@ -6,6 +6,7 @@ import {
   Box,
   SimpleGrid,
   Link,
+  Divider
 } from "@chakra-ui/react";
 
 const url = "http://localhost:3001";
@@ -63,19 +64,15 @@ class Items extends Component {
       <>
         {this.state.user.isAdmin ? (
           <Box>
+            <Form submission={this.handleCreate} name={"Add Item"} onChange={this.handleChange}/> 
+            <Divider borderTop="8px solid #bbb" borderRadius="5px" />
             <SimpleGrid p="5" columns={[1, null, 3]} spacing='40px'>
               {this.state.items.map(item =>{
                 return (
-                  // Need to add link to each item
-                  // Delete button should not be viewable
-                  // Description should hide when on ItemsPage
-                  <Link href={`/items/${item.id}`}>
-                    <Item item={item} userEmail={this.props.userEmail} user={this.state.user}/>
-                  </Link>
+                  <Item item={item} userEmail={this.props.userEmail} user={this.state.user} page={"ItemsPage"}/>
                 );
               })}
             </SimpleGrid>
-            <Form submission={this.handleCreate} name={"Add Item"} onChange={this.handleChange}/> 
           </Box>     
         ) : (
           <Box>
@@ -83,7 +80,7 @@ class Items extends Component {
               {this.state.items.map((item) => {
                 return (
                   <Link href={`/items/${item.id}`}>
-                    <Item item={item} userEmail={this.props.userEmail} user={this.state.user}/>
+                    <Item item={item} userEmail={this.props.userEmail} user={this.state.user} page={"ItemsPage"}/>
                   </Link>
                 );
               })}
