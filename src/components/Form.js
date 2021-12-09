@@ -14,16 +14,16 @@ import {
 
 const Form = (props) => {    
     return (
-        <div>
-            <Flex minH={'25vh'} align={'center'} justify={'center'} bg={useColorModeValue('gray.50', 'gray.800')}>
+        <Box>
+            <Flex minH={'25vh'} align={'center'} justify={'center'} bg={useColorModeValue('#F2E9E4', '#1A202C')}>
                 <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
                     <Stack align={'center'}>
-                        <Heading fontSize={'3xl'} textAlign={'center'}>
+                        <Heading fontSize={'3xl'} textAlign={'center'} color={useColorModeValue('#22223B', 'white')}>
                             Update Item
                         </Heading>
                     </Stack>
-                    <Box rounded={'lg'} bg={useColorModeValue('white', 'gray.700')} boxShadow={'lg'} p={8}>
-                        <form onSubmit={props.submission}>
+                    <Box rounded={'lg'} bg={useColorModeValue("#c9ada7", "#22223B")} boxShadow={'lg'} p={8}>
+                        <form onSubmit={props.submission} style={{color: "white"}}>
                             <Stack spacing={4}>
                                 <HStack>
                                     <Box>
@@ -48,7 +48,7 @@ const Form = (props) => {
                                     <Input type="text" onChange={props.onChange}/>
                                 </FormControl>
                                 <Stack spacing={10} pt={2}>
-                                    <Button type="submit" size="lg" bg={'blue.400'} color={'white'} hover={{bg: 'blue.500'}}>
+                                    <Button type="submit" size="lg" bg={'green.500'} color={'white'} hover={{bg: 'blue.500'}}>
                                         Update Item
                                     </Button>
                                 </Stack>
@@ -57,7 +57,7 @@ const Form = (props) => {
                     </Box>
                 </Stack>
             </Flex>
-        </div>
+        </Box>
     );
 }
 
