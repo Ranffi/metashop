@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Box, Badge, Flex } from '@chakra-ui/react'
+import { Box, Badge, SimpleGrid } from '@chakra-ui/react'
 
 class Homepage extends Component {
 
@@ -14,7 +14,6 @@ class Homepage extends Component {
 
   async componentDidMount() {
     const res = await axios.get('http://localhost:3001/categories')
-    console.log(res)
     this.setState({ categories: res.data })
   }
 
@@ -30,18 +29,18 @@ class Homepage extends Component {
           bgRepeat="no-repeat"
           bgImage="https://images.unsplash.com/photo-1534349735944-2b3a6f7a268f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
         </Box>
-        <Flex ml='15%' wrap='wrap' mt="20px">
+        <SimpleGrid mt="20px" columns={[1, 2]} justifyItems='center'>
           {categories.map((category) => {
             return (
               <>
 
-                <Box w='50%' >
+                <Box>
                   {/* <Link to={`/category/${category.id}/items`}> */}
                   <Link to={`/items`}>
                     <Box
-                      maxW='sm'
                       borderWidth='1px'
                       borderRadius='lg'
+                      w='350px'
                       p='50px'
                       m='25px'
                       overflow='hidden'
@@ -64,8 +63,10 @@ class Homepage extends Component {
 
                         <Box
                           mt='1'
+                          color = 'white'
+                          fontSize='1.3rem'
                           fontWeight='semibold'
-                          as='h4'
+                          as='h1'
                           lineHeight='tight'
                           isTruncated
                         >
@@ -81,7 +82,7 @@ class Homepage extends Component {
 
             )
           })}
-        </Flex>
+        </SimpleGrid>
       </>
     )
   }
