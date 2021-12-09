@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Item from "./Item"
-import Form from "./Form"
+import Item from "./Item";
+import Form from "./Form";
 import axios from "axios";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 
 const url = "http://localhost:3001";
 
@@ -18,18 +19,18 @@ class SingleItem extends Component {
         this.setState({ item: res.data });
       });
 
-      axios.get(`${url}/user/${this.props.userEmail}`).then(res => {
-        this.setState({user: res.data})
-      } )
+    axios.get(`${url}/user/${this.props.userEmail}`).then((res) => {
+      this.setState({ user: res.data });
+    });
   }
 
   onDelete = () => {
-    if (window.confirm('Are you sure you want to delete the item?')) {
+    if (window.confirm("Are you sure you want to delete the item?")) {
       axios
-      .delete(`${url}/items/${window.location.pathname.split("/")[2]}`)
-      .then((res) => {
-        this.setState({ item: res.data });
-      });
+        .delete(`${url}/items/${window.location.pathname.split("/")[2]}`)
+        .then((res) => {
+          this.setState({ item: res.data });
+        });
     }
   };
 
@@ -53,33 +54,43 @@ class SingleItem extends Component {
   };
 
   handleChange = (event) => {
-    const value = event.target.value
+    const value = event.target.value;
     this.setState({
       ...this.state,
-      [event.target.name]: value
+      [event.target.name]: value,
     });
-  };
-
-  getUser = async () => {
-    const user = await axios.get(`${url}/user/${this.props.userEmail}`);
-    this.setState({ user: user.data });
   };
 
   render() {
     const item = this.state.item;
     return (
-      <div>
+      <Box>
         {this.state.user.isAdmin ? (
-          <div>
-            <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
-            <Form submission={this.handleUpdate} name={"Update Item"} onChange={this.handleChange}/>          
-          </div>
+          <Box>
+            <SimpleGrid columns={[1, null, 4]}>
+              <Box></Box>
+              <Item
+                item={item}
+                userEmail={this.props.userEmail}
+                onDelete={this.onDelete}
+              />
+              <Form
+                submission={this.handleUpdate}
+                name={"Update Item"}
+                onChange={this.handleChange}
+              />
+              <Box></Box>
+            </SimpleGrid>
+          </Box>
         ) : (
-          <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
+          <Item
+            item={item}
+            userEmail={this.props.userEmail}
+            onDelete={this.onDelete}
+          />
         )}
-      </div>
+      </Box>
     );
   }
 }
 export default SingleItem;
-
