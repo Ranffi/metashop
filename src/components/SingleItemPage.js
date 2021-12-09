@@ -68,10 +68,10 @@ class SingleItem extends Component {
         {this.state.user.isAdmin ? (
           <Box>
             <SimpleGrid columns={[1, null, 4]}>
-              <Box></Box>
               <Item
                 item={item}
                 userEmail={this.props.userEmail}
+                user={this.state.user}
                 onDelete={this.onDelete}
               />
               <Form
@@ -79,13 +79,13 @@ class SingleItem extends Component {
                 name={"Update Item"}
                 onChange={this.handleChange}
               />
-              <Box></Box>
             </SimpleGrid>
           </Box>
         ) : (
           <Item
             item={item}
             userEmail={this.props.userEmail}
+            user={this.state.user}
             onDelete={this.onDelete}
           />
         )}
