@@ -19,7 +19,7 @@ const Form = (props) => {
                 <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
                     <Stack align={'center'}>
                         <Heading fontSize={'3xl'} textAlign={'center'} color={useColorModeValue('#22223B', 'white')}>
-                            Update Item
+                            {props.name}
                         </Heading>
                     </Stack>
                     <Box rounded={'lg'} bg={useColorModeValue("#c9ada7", "#22223B")} boxShadow={'lg'} p={8}>
@@ -49,7 +49,7 @@ const Form = (props) => {
                                 </FormControl>
                                 <Stack spacing={10} pt={2}>
                                     <Button type="submit" size="lg" bg={'green.500'} color={'white'} hover={{bg: 'blue.500'}}>
-                                        Update Item
+                                        {props.name}
                                     </Button>
                                 </Stack>
                             </Stack>
