@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Button from "./Button";
+import Item from "./Item"
+import Form from "./Form"
 import axios from "axios";
 import {
   Box,
@@ -16,11 +18,10 @@ const url = "http://localhost:3001";
 
 class Items extends Component {
   state = {
-      items: [],
-      user: {},
-      CategoryId: window.location.pathname.split("/")[2],
-
-    }
+    items: [],
+    user: {},
+    CategoryId: window.location.pathname.split("/")[2],
+  }
 
   componentDidMount() {
     axios
@@ -31,8 +32,7 @@ class Items extends Component {
 
       axios.get(`${url}/user/${this.props.userEmail}`).then(res => {
         this.setState({user: res.data})
-      } )
-
+      })
   }
 
   handleCreate = (event) => {
@@ -55,155 +55,92 @@ class Items extends Component {
       });
   };
 
+  handleChange = (event) => {
+    const value = event.target.value
+    this.setState({
+      ...this.state,
+      [event.target.name]: value
+    });
+  };
+
 
   render() {
     return (
       <>
-      <div>
-      {this.state.user.isAdmin?
-        <div>
-          <SimpleGrid p="5" columns={[1, null, 3]} spacing='40px'>
-        {
-          this.state.items.map(item =>{
-            return (
-              <Flex
-                key={item.id}
-                bg="#9A8C98"
-                direction="column"
-                borderRadius="0.5em"
-                justify="space-around"
-              >
-                <Container>
-                  <Center>
-                    <Link href={`/items/${item.id}`}>
-                      <Image
-                        flex="2"
-                        alignSelf="center"
-                        src={item.image}
-                        boxSize="15em"
-                        float="left"
-                        objectFit="fill"
-                        borderRadius="0.5em"
-                        marginBottom="5"
-                        marginTop="5"
-                      />
-                    </Link>
-                  </Center>
-                </Container>
-                <Flex margin="5" justify="space-between" align="center">
-                  <Flex direction="column">
-                    <Box>
-                      <Text color="black" as="em" justify="center">
-                        {item.title}
-                      </Text>
-                    </Box>
-                    <Text fontSize="20px">{`$${item.price}`}</Text>
-                  </Flex>
-                  <Button
-                    color="#22223b"
-                    itemId={item.id}
-                    userEmail={this.props.userEmail}
-                  />
-                </Flex>
-              </Flex>
-            );
-          })}
-        </SimpleGrid>
-          <h1>Add Item</h1>
-          <form onSubmit={this.handleCreate}>
-            <label>
-              Title of Item:
-              <input
-                type="text"
-                name="titleOfItem"
-                onChange={this.handleChange}
-              />
-            </label>
-
-            <label>
-              Image of Item:
-              <input
-                type="text"
-                name="imageOfItem"
-                onChange={this.handleChange}
-              />
-            </label>
-
-            <label>
-              Description of Item:
-              <input
-                type="text"
-                name="descriptionOfItem"
-                onChange={this.handleChange}
-              />
-            </label>
-
-            <label>
-              Price of Item:
-              <input
-                type="text"
-                name="priceOfItem"
-                onChange={this.handleChange}
-              />
-            </label>
-
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-        :
-        <SimpleGrid columns={[1, null, 3]} spacing="40px" margin="10">
-          {this.state.items.map((item) => {
-            console.log(item.id);
-            return (
-              <Flex
-                key={item.id}
-                bg="#9A8C98"
-                direction="column"
-                borderRadius="0.5em"
-                justify="space-around"
-              >
-                <Container>
-                  <Center>
-                    <Link href={`/items/${item.id}`}>
-                      <Image
-                        flex="2"
-                        alignSelf="center"
-                        src={item.image}
-                        boxSize="15em"
-                        float="left"
-                        objectFit="fill"
-                        borderRadius="0.5em"
-                        marginBottom="5"
-                        marginTop="5"
-                      />
-                    </Link>
-                  </Center>
-                </Container>
-                <Flex margin="5" justify="space-between" align="center">
-                  <Flex direction="column">
-                    <Box>
-                      <Text color="black" as="em" justify="center">
-                        {item.title}
-                      </Text>
-                    </Box>
-                    <Text fontSize="20px">{`$${item.price}`}</Text>
-                  </Flex>
-                  <Button
-                    color="#22223b"
-                    itemId={item.id}
-                    userEmail={this.props.userEmail}
-                  />
-                </Flex>
-              </Flex>
-            );
-          })}
-        </SimpleGrid>
-      }
-      </div>
+        {this.state.user.isAdmin ? (
+          <Box>
+            <SimpleGrid p="5" columns={[1, null, 3]} spacing='40px'>
+              {this.state.items.map(item =>{
+                return (
+                  // Need to add link to each item
+                  // Delete button should not be viewable
+                  <Link href={`/items/${item.id}`}>
+                    <Item item={item} userEmail={this.props.userEmail}/>
+                  </Link>
+                );
+              })}
+            </SimpleGrid>
+            <Form submission={this.handleCreate} name={"Add Item"} onChange={this.handleChange}/> 
+          </Box>     
+        ) : (
+          <Box>
+            <SimpleGrid columns={[1, null, 3]} spacing="40px" margin="10">
+              {this.state.items.map((item) => {
+                return (
+                  <Link href={`/items/${item.id}`}>
+                    <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
+                  </Link>
+                );
+              })}
+            </SimpleGrid>
+          </Box>
+        )
+        }
       </>
-
     )
   }
 }
 
 export default Items;
+
+// Item (too scared to delete at the moment):
+{/* <Flex
+key={item.id}
+bg="#9A8C98"
+direction="column"
+borderRadius="0.5em"
+justify="space-around"
+>
+<Container>
+  <Center>
+    <Link href={`/items/${item.id}`}>
+      <Image
+        flex="2"
+        alignSelf="center"
+        src={item.image}
+        boxSize="15em"
+        float="left"
+        objectFit="fill"
+        borderRadius="0.5em"
+        marginBottom="5"
+        marginTop="5"
+      />
+    </Link>
+  </Center>
+</Container>
+<Flex margin="5" justify="space-between" align="center">
+  <Flex direction="column">
+    <Box>
+      <Text color="black" as="em" justify="center">
+        {item.title}
+      </Text>
+    </Box>
+    <Text fontSize="20px">{`$${item.price}`}</Text>
+  </Flex>
+  <Button
+    color="#22223b"
+    itemId={item.id}
+    userEmail={this.props.userEmail}
+  />
+</Flex>
+</Flex> */}
