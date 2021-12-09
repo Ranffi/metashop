@@ -15,7 +15,7 @@ const Router = ({ isLoggedin, signOut, userEmail }) => {
       {!isLoggedin ? (
         <>
           <Routes>
-            <Route path="/login"  element={<Login />}>
+            <Route path="/"  element={<Login />}>
               Log In
             </Route>
           </Routes>

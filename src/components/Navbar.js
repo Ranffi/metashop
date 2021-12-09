@@ -27,7 +27,7 @@ export default function Nav(props) {
               {!props.isLoggedin ? (
                 <div></div>
               ) : (
-                <Link to={"/login"}>
+                <Link to={"/"}>
                   <Button onClick={props.signOut}>
                     <FiLogOut />
                   </Button>
