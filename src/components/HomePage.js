@@ -35,8 +35,7 @@ class Homepage extends Component {
               <>
 
                 <Box>
-                  {/* <Link to={`/category/${category.id}/items`}> */}
-                  <Link to={`/items`}>
+                  <Link to={`/categories/${category.id}/items`}>
                     <Box
                       borderWidth='1px'
                       borderRadius='lg'
@@ -63,7 +62,7 @@ class Homepage extends Component {
 
                         <Box
                           mt='1'
-                          color = 'white'
+                          color='white'
                           fontSize='1.3rem'
                           fontWeight='semibold'
                           as='h1'
