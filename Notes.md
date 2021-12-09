@@ -13,7 +13,7 @@ HomePage (Ranffi)
         - display category name, category image, link to item page
         - fetch category data
 
-CartPage
+CartPage (Javier)
     - cartItemsContainer (display items and their individual price, fetch from db - order table)
         -itemContainer* (display image, price, name, remove from cart button(buttonContainer))
     - total
