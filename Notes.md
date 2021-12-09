@@ -28,3 +28,19 @@ AFTER MVP:
 - SignUpPage
 
 *used in multiple places
+
+
+Presentation:
+Jazmin introduces group & mentions tools used for project
+Jazmin demonstrates site (ONLY log in as a non-admin)
+Anderson talks ItemsPage & conditional rendering for admin (Jazmin logs in as admin) 
+Ranffi talks about Homepage & styling & tests (Jazmin runs 'npm run test:report')
+Jazmin talks about SingleItemPage, Button, Item.js, Form.js
+Javier talks about cart & Chakra
+
+Jazmin: 
+How did we work as a group:
+This was a learning environment. If we didn't know how to implement something, we worked together to come up with different solutions. Examples: No one knew how to work w/ Chakra but Javier suggested it and we decided to use it and learn it together. Everyone else in the group knew Firebase except for me, so they gave me the task of setting it up. 
+
+Jazmin:
+Future features: Implement stripe for checkout
