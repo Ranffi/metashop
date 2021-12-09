@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from "./Button"
 import { Flex, Box, Image, Center, Container, useColorModeValue } from "@chakra-ui/react";
 

@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import history from "./history";
 import App from "./components/App";
-import { useColorModeValue } from "@chakra-ui/react";
 
 ReactDOM.render(
   <React.StrictMode>
