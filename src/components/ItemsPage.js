@@ -1,16 +1,10 @@
 import React, { Component } from "react";
-import Button from "./Button";
 import Item from "./Item"
 import Form from "./Form"
 import axios from "axios";
 import {
   Box,
   SimpleGrid,
-  Image,
-  Text,
-  Flex,
-  Container,
-  Center,
   Link,
 } from "@chakra-ui/react";
 

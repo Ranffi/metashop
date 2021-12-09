@@ -19,7 +19,7 @@ const Item = (props) => {
                     <Container>
                         <Box align="right" p={3}>
                             {/* IF ITEM COMPONENT ADDED TO ItemsPage, ADD CONDITIONAL STATEMENT FOR BUTTON TO CHECK IF ADMIN */}
-                            <Link to={`/`} >
+                            <Link to={`/homepage`} >
                             <ChakraButton  bg={useColorModeValue("#c9ada7", "#22223B")}  >
                                 <CloseIcon onClick={props.onDelete} />
                                 </ChakraButton>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import {
   Flex,
   Box,
@@ -19,15 +20,18 @@ import fire from "../../fire.js";
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fire
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch((error) => {
+    try{
+      const auth = fire.auth()
+      auth.signInWithEmailAndPassword(email, password)
+      navigate('/homepage');
+    }
+      catch( error ) {
         console.error("Incorrect username or password");
-      });
+      };
   };
   return (
     <Flex
