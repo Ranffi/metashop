@@ -68,8 +68,9 @@ class Items extends Component {
                 return (
                   // Need to add link to each item
                   // Delete button should not be viewable
+                  // Description should hide when on ItemsPage
                   <Link href={`/items/${item.id}`}>
-                    <Item item={item} userEmail={this.props.userEmail}/>
+                    <Item item={item} userEmail={this.props.userEmail} user={this.state.user}/>
                   </Link>
                 );
               })}
@@ -82,7 +83,7 @@ class Items extends Component {
               {this.state.items.map((item) => {
                 return (
                   <Link href={`/items/${item.id}`}>
-                    <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
+                    <Item item={item} userEmail={this.props.userEmail} user={this.state.user}/>
                   </Link>
                 );
               })}
