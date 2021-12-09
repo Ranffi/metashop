@@ -24,11 +24,13 @@ class SingleItem extends Component {
   }
 
   onDelete = () => {
-    axios
+    if (window.confirm('Are you sure you want to delete the item?')) {
+      axios
       .delete(`${url}/items/${window.location.pathname.split("/")[2]}`)
       .then((res) => {
         this.setState({ item: res.data });
       });
+    }
   };
 
   handleUpdate = (event) => {
@@ -37,7 +39,6 @@ class SingleItem extends Component {
     const description =
       event.target.descriptionOfItem.value || this.state.item.description;
     const price = event.target.priceOfItem.value || this.state.item.price;
-    console.log(title);
 
     axios
       .put(`${url}/items/${window.location.pathname.split("/")[2]}`, {
