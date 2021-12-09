@@ -17,7 +17,9 @@ const url = "http://localhost:3001";
 class Items extends Component {
   state = {
       items: [],
-      user: {}
+      user: {},
+      CategoryId: window.location.pathname.split("/")[2],
+
     }
 
   componentDidMount() {
@@ -46,6 +48,7 @@ class Items extends Component {
         imageUrl,
         description,
         price,
+        CategoryId: this.state.CategoryId
       })
       .then((res) => {
         this.setState({ items: [...this.state.items, res.data] });

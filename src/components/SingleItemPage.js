@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import Button from "./Button";
 import Item from "./Item"
 import axios from "axios";
-import { Flex, Box, Image, Center, Container } from "@chakra-ui/react";
+import { Flex, Box} from "@chakra-ui/react";
 
 const url = "http://localhost:3001";
 
