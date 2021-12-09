@@ -16,8 +16,13 @@ import {
   Button as ChakraButton,
 } from "@chakra-ui/react";
 import { MdPayment } from "react-icons/md";
+import {FaTrash } from "react-icons/fa"
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const url = "http://localhost:3001";
+
 
 class CartPage extends Component {
   state = {
@@ -35,6 +40,40 @@ class CartPage extends Component {
     this.state.itemsInCart.forEach((item) => (total += item.price));
 
     this.setState({ totalPrice: total });
+  }
+
+  async handleRemoveFromCart(itemId) {
+    await axios
+    .delete(
+      `${url}/items/${itemId}/user/${this.props.userEmail}/cart`
+
+    )
+    .then(() =>
+
+        toast.error("Removed from Cart", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        draggable: true,
+      })
+    );
+
+    const cart = await axios.get(`${url}/user/${this.props.userEmail}/cart`);
+    this.setState({ itemsInCart: [...cart.data.Items] });
+
+    let total = 0;
+
+    this.state.itemsInCart.forEach((item) => ( total += item.price));
+    this.setState({ totalPrice: total });
+  }
+
+  handleCheckoutButtonClick(){
+    toast.info("Checkout does not work, but you can give us money if they want 🤡", {
+      position: "top-right",
+      autoClose: 6000,
+      hideProgressBar: true,
+      draggable: true,
+    })
   }
 
   render() {
@@ -84,6 +123,9 @@ class CartPage extends Component {
                       <Td>
                         <Center>
                           <Text>{`$${item.price}`}</Text>
+                          <Container>
+                          <FaTrash onClick={()=>this.handleRemoveFromCart(item.id)}/>
+                          </Container>
                         </Center>
                       </Td>
                     </Tr>
@@ -121,13 +163,14 @@ class CartPage extends Component {
                     marginBottom="40"
                   >{`$${this.state.totalPrice}`}</Text>
                 </Center>
-                <ChakraButton bg="#9A8C98" rightIcon={<MdPayment />}>
+                <ChakraButton onClick={this.handleCheckoutButtonClick} bg="#9A8C98" rightIcon={<MdPayment />}>
                   Checkout
                 </ChakraButton>
               </Box>
             </Center>
           </Box>
         </Box>
+        <ToastContainer limit={2} theme="colored" />
       </Container>
     );
   }
