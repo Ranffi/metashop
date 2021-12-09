@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from "./Button"
-import { Flex, Box, Image, Center, Container, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Box, Image, Center, Container, useColorModeValue, Button as ChakraButton} from "@chakra-ui/react";
+import { CloseIcon } from '@chakra-ui/icons'
+import {Link} from "react-router-dom"
 
 const Item = (props) => {
     return (
@@ -17,7 +19,11 @@ const Item = (props) => {
                     <Container>
                         <Box align="right" p={3}>
                             {/* IF ITEM COMPONENT ADDED TO ItemsPage, ADD CONDITIONAL STATEMENT FOR BUTTON TO CHECK IF ADMIN */}
-                            <button onClick={props.onDelete} style={{color: "white"}}>X</button> 
+                            <Link to={`/homepage`} >
+                            <ChakraButton  bg={useColorModeValue("#c9ada7", "#22223B")}  >
+                                <CloseIcon onClick={props.onDelete} />
+                                </ChakraButton>
+                                </Link> 
                         </Box>
                         <Center>
                             <Image
