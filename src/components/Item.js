@@ -15,7 +15,10 @@ const Item = (props) => {
                     position="relative"
                 >
                     <Container>
-                        <button onClick={props.onDelete}>X</button>
+                        <Box align="right" p={3}>
+                            {/* IF ITEM COMPONENT ADDED TO ItemsPage, ADD CONDITIONAL STATEMENT FOR BUTTON TO CHECK IF ADMIN */}
+                            <button onClick={props.onDelete} style={{color: "white"}}>X</button> 
+                        </Box>
                         <Center>
                             <Image
                                 src={props.item.image}

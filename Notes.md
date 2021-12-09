@@ -44,10 +44,9 @@ ItemsPage: Admin Form (Anderson)
 14. handleChange isn't working - words don't pop up in input when you type
 15. When creating items, need to give item a categoryId
 
-Single Item Page: (Anderson/Jazmin (need help from Javier for color))
-17. Update Item form needs Chakra
+Single Item Page: (Jazmin)
 18. Need to finish admin item deletion functionality
 19. Need to successfully redirect after deleting item
 
 IF THERE IS TIME: (Jazmin)
-MAKE ITEM.JS AND PUT IT INTO SINGLEITEMPAGE.JS AND ITEMSPAGE.JS AS ITEM COMPONENT
+Change structure of ItemsPage so that it only shows Item and Form components in render function
