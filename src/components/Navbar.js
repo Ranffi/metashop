@@ -19,7 +19,7 @@ export default function Nav(props) {
     <>
       <Box bg={useColorModeValue("#c9ada7", "#22223B")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Link to={"/"}>
+          <Link to={"/homepage"}>
             <Box><Text fontSize={["xl", "3xl"]}>∞ Metashop</Text></Box>
           </Link>
           <Flex alignItems={"center"}>
@@ -27,7 +27,7 @@ export default function Nav(props) {
               {!props.isLoggedin ? (
                 <div></div>
               ) : (
-                <Link to={"/#"}>
+                <Link to={"/login"}>
                   <Button onClick={props.signOut}>
                     <FiLogOut />
                   </Button>

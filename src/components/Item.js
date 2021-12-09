@@ -19,7 +19,7 @@ const Item = (props) => {
                     <Container>
                         {props.user.isAdmin ? (
                             <Box align="right" p={3}>
-                                <Link to={`/`} >
+                                <Link to={`/homepage`} >
                                     <CloseIcon onClick={props.onDelete} />
                                 </Link> 
                             </Box>

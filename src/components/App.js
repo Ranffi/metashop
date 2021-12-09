@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Router from "./Router";
 import fire from "../fire";
 import { useColorModeValue, Box } from "@chakra-ui/react";
@@ -6,15 +7,19 @@ import { useColorModeValue, Box } from "@chakra-ui/react";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState("");
+  const navigate = useNavigate();
 
 
   fire.auth().onAuthStateChanged((user) => {
-    setUserEmail(user.email);
+    if(user) {
+      setUserEmail(user.email);
+    }
     return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
   });
 
   const signOut = () => {
     fire.auth().signOut();
+    navigate('/login')
   };
 
   return (
