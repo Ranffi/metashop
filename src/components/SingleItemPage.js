@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "./Button";
 import Item from "./Item"
 import axios from "axios";
-import { Flex, Box, Image, Center, Container } from "@chakra-ui/react";
+import { Flex, Box, FormControl, FormLabel, Input, InputGroup, HStack, InputRightElement, Stack, Heading, Text, Link } from "@chakra-ui/react";
 
 const url = "http://localhost:3001";
 
@@ -10,7 +10,10 @@ class SingleItem extends Component {
   state = {
     item: {},
     user: {},
-    value: "",
+    titleOfItem: "",
+    imageOfItem: "",
+    priceOfItem: "",
+    descriptionOfItem: ""
   };
 
   componentDidMount() {
@@ -54,8 +57,10 @@ class SingleItem extends Component {
   };
 
   handleChange = (event) => {
+    const value = event.target.value
     this.setState({
-      [event.target.name]: event.target.value,
+      ...this.state,
+      [event.target.name]: value
     });
   };
 
@@ -68,9 +73,63 @@ class SingleItem extends Component {
     const item = this.state.item;
     return (
       <div>
+        <Flex minH={'50vh'} align={'center'} justify={'center'}>
+          <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+            <Stack align={'center'}>
+              <Heading fontSize={'4xl'} textAlign={'center'}>
+                Update Item
+              </Heading>
+            </Stack>
+            <Box rounded={'lg'} bg={"black"} boxShadow={'lg'} p={8}>
+              <Stack spacing={4}>
+                <HStack>
+                  <Box>
+                    <FormControl id="firstName" isRequired>
+                      <FormLabel>First Name</FormLabel>
+                      <Input type="text" />
+                    </FormControl>
+                  </Box>
+                  <Box>
+                    <FormControl id="lastName">
+                      <FormLabel>Last Name</FormLabel>
+                      <Input type="text" />
+                    </FormControl>
+                  </Box>
+                </HStack>
+                <FormControl id="email" isRequired>
+                  <FormLabel>Email address</FormLabel>
+                  <Input type="email" />
+                </FormControl>
+                <FormControl id="password" isRequired>
+                  <FormLabel>Password</FormLabel>
+                  <InputGroup>
+                    <InputRightElement h={'full'}>
+                      "Hello"
+                    </InputRightElement>
+                  </InputGroup>
+                </FormControl>
+                <Stack spacing={10} pt={2}>
+                  <Button
+                    loadingText="Submitting"
+                    size="lg"
+                    bg={'blue.400'}
+                    color={'white'}
+                    _hover={{
+                      bg: 'blue.500',
+                    }}>
+                    Sign up
+                  </Button>
+                </Stack>
+              </Stack>
+            </Box>
+          </Stack>
+        </Flex>
+
+
         {this.state.user.isAdmin ? (
           <div>
-              <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
+            <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
+            {/* FORM STARTS HERE */}
             <Flex p={50} w="full" alignItems="center" justifyContent="center">
               <Box>
                 <h1>Update Item</h1>
@@ -78,10 +137,12 @@ class SingleItem extends Component {
                   <label>
                     Title of Item:
                     <input
+                      style={{color: "red"}}
                       type="text"
                       name="titleOfItem"
-                      value={this.value}
+                      value={this.state.titleOfItem}
                       onChange={this.handleChange}
+                      backgroundColor="red"
                     />
                   </label>
                   <br />
@@ -90,7 +151,7 @@ class SingleItem extends Component {
                     <input
                       type="text"
                       name="imageOfItem"
-                      value={this.value}
+                      value={this.state.imageOfItem}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -100,7 +161,7 @@ class SingleItem extends Component {
                     <input
                       type="text"
                       name="priceOfItem"
-                      value={this.value}
+                      value={this.state.priceOfItem}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -113,7 +174,7 @@ class SingleItem extends Component {
                       rows="4"
                       cols="70"
                       name="descriptionOfItem"
-                      value={this.value}
+                      value={this.state.descriptionOfItem}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -131,3 +192,4 @@ class SingleItem extends Component {
   }
 }
 export default SingleItem;
+
