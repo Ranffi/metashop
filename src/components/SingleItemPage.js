@@ -72,7 +72,7 @@ class SingleItem extends Component {
         {this.state.user.isAdmin ? (
           <div>
             <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>
-            <Form submission={this.handleUpdate} purpose={"update"} onChange={this.handleChange}/>          
+            <Form submission={this.handleUpdate} name={"Update Item"} onChange={this.handleChange}/>          
           </div>
         ) : (
           <Item item={item} userEmail={this.props.userEmail} onDelete={this.onDelete}/>

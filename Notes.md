@@ -44,9 +44,9 @@ ItemsPage: Admin Form (Anderson)
 14. handleChange isn't working - words don't pop up in input when you type
 15. When creating items, need to give item a categoryId
 
-Single Item Page: (Jazmin)
+Single Item Page: (Anderson/Jazmin)
 18. Need to finish admin item deletion functionality
 19. Need to successfully redirect after deleting item
 
 IF THERE IS TIME: (Jazmin)
-Change structure of ItemsPage so that it only shows Item and Form components in render function
+Change structure of ItemsPage so that it only shows Item and Form components in render function. If this happens, need to make sure delete item button only shows up when user = admin (see line 19-20 in Item.js).
