@@ -6,6 +6,16 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 
 const url = "http://localhost:3001";
 
+/**
+ * Displays a single item for users.
+ */
+
+/**
+ * Displays a single item for admins
+ * and form to update or delete the
+ * single item.
+ */
+
 class SingleItem extends Component {
   state = {
     item: {},
@@ -24,6 +34,11 @@ class SingleItem extends Component {
     });
   }
 
+   /**
+   * Enables the admin to remove the item from the
+   * selected category.
+   */
+
   onDelete = () => {
     axios
       .delete(`${url}/items/${window.location.pathname.split("/")[2]}`)
@@ -32,6 +47,10 @@ class SingleItem extends Component {
       });
   };
 
+  /**
+   * Enables the admin to update the item from the
+   * selected category.
+   */
   handleUpdate = (event) => {
     const title = event.target.titleOfItem.value || this.state.item.title;
     const imageUrl = event.target.imageOfItem.value || this.state.item.imageUrl;

@@ -4,6 +4,9 @@ import { Flex, Box, Image, Center, Container, useColorModeValue, Button as Chakr
 import { CloseIcon } from '@chakra-ui/icons'
 import {Link} from "react-router-dom"
 
+/**
+ * Resuable component that displays item details
+ */
 const Item = (props) => {
     return (
         <Box>
