@@ -11,6 +11,14 @@ import {
 
 const url = "http://localhost:3001";
 
+
+
+/**
+ * Reusable component that display
+ * all products that belong to a 
+ * category.
+ */
+
 class Items extends Component {
   state = {
     items: [],
@@ -30,6 +38,10 @@ class Items extends Component {
       })
   }
 
+  /**
+   * Enables the admin to add an item to
+   * the category.
+   */
   handleCreate = (event) => {
     event.preventDefault();
     const title = event.target.titleOfItem.value;
@@ -95,44 +107,3 @@ class Items extends Component {
 
 export default Items;
 
-// Item (too scared to delete at the moment):
-{/* <Flex
-key={item.id}
-bg="#9A8C98"
-direction="column"
-borderRadius="0.5em"
-justify="space-around"
->
-<Container>
-  <Center>
-    <Link href={`/items/${item.id}`}>
-      <Image
-        flex="2"
-        alignSelf="center"
-        src={item.image}
-        boxSize="15em"
-        float="left"
-        objectFit="fill"
-        borderRadius="0.5em"
-        marginBottom="5"
-        marginTop="5"
-      />
-    </Link>
-  </Center>
-</Container>
-<Flex margin="5" justify="space-between" align="center">
-  <Flex direction="column">
-    <Box>
-      <Text color="black" as="em" justify="center">
-        {item.title}
-      </Text>
-    </Box>
-    <Text fontSize="20px">{`$${item.price}`}</Text>
-  </Flex>
-  <Button
-    color="#22223b"
-    itemId={item.id}
-    userEmail={this.props.userEmail}
-  />
-</Flex>
-</Flex> */}
