@@ -20,10 +20,9 @@
 - Jest
 - React
 - Express
-- Sequelize
 - ChakraUI
-- Framer Motion
-- Sqlite
+- Sequelize/Sqlite
+- Firebase
 
 ## Available Scripts
 

@@ -18,7 +18,7 @@ CartPage (Javier)
         -itemContainer* (display image, price, name, remove from cart button(buttonContainer))
     - total
 
-ItemPage (Anderson)
+ItemsPage (Anderson)
     - itemContainer* (display image, price, name, add from cart button(buttonContainer))
 
 buttonContainer (Jazmin)

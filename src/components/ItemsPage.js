@@ -91,9 +91,7 @@ class Items extends Component {
             <SimpleGrid columns={[1, null, 3]} spacing="40px" margin="10">
               {this.state.items.map((item) => {
                 return (
-                  <Link href={`/items/${item.id}`}>
                     <Item item={item} userEmail={this.props.userEmail} user={this.state.user} page={"ItemsPage"}/>
-                  </Link>
                 );
               })}
             </SimpleGrid>
