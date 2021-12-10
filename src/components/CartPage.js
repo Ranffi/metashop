@@ -19,7 +19,7 @@ import {
 import { MdPayment } from "react-icons/md";
 import { FaTrash } from "react-icons/fa";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify"; // Library for the notification popups
 import "react-toastify/dist/ReactToastify.css";
 
 const url = "http://localhost:3001";
@@ -31,10 +31,13 @@ class CartPage extends Component {
   };
 
   async componentDidMount() {
+    // Retrieve what the user has in their respective cart
     const cart = await axios.get(`${url}/user/${this.props.userEmail}/cart`);
 
+    // Updates the cart on the browser
     this.setState({ itemsInCart: [...cart.data.Items] });
 
+    // Updates the total from the items in the cart
     let total = this.state.totalPrice;
 
     this.state.itemsInCart.forEach((item) => (total += item.price));
@@ -43,9 +46,11 @@ class CartPage extends Component {
   }
 
   async handleRemoveFromCart(itemId) {
+    // Sends a delete request to remove the specified item from the cart
     await axios
       .delete(`${url}/items/${itemId}/user/${this.props.userEmail}/cart`)
       .then(() =>
+        // The Red remove from cart pop up
         toast.error("Removed from Cart", {
           position: "top-center",
           autoClose: 2000,
@@ -54,6 +59,7 @@ class CartPage extends Component {
         })
       );
 
+    // Updates the cart and price again
     const cart = await axios.get(`${url}/user/${this.props.userEmail}/cart`);
     this.setState({ itemsInCart: [...cart.data.Items] });
 
@@ -109,6 +115,7 @@ class CartPage extends Component {
                 </Tr>
               </Thead>
               <Tbody>
+                {/* This maps through items in the cart and displays them in rows  */}
                 {this.state.itemsInCart.map((item) => {
                   return (
                     <Tr key={item.id}>
@@ -129,6 +136,7 @@ class CartPage extends Component {
                         <Center>
                           <Flex direction="row" align="center">
                             <Text>{`$${item.price} `}</Text>
+                            {/* This is the remove button when clicked it triggers the handleRemoveFromCart button */}
                             <ChakraButton
                               bg="none"
                               onClick={() => this.handleRemoveFromCart(item.id)}
@@ -171,6 +179,7 @@ class CartPage extends Component {
                     fontSize="xl"
                     fontWeight="bold"
                     marginBottom="40"
+                    // This is where the total price is displayed and gets updated
                   >{`$${this.state.totalPrice}`}</Text>
                 </Center>
                 <ChakraButton

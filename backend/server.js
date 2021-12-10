@@ -75,6 +75,7 @@ app.get("/user/:email/cart", async (req, res, next) => {
   const email = req.params.email;
 
   try {
+    //Finds the User by email and with that retrival includes the their added items in the cart
     const cart = await User.findOne({
       where: {
         email: email,
@@ -104,14 +105,17 @@ app.put("/items/:id/user/:email/cart", async (req, res, next) => {
     const id = req.params.id;
     const email = req.params.email;
 
+    // Finds user by email
     const user = await User.findOne({
       where: {
         email: email,
       },
     });
 
+    // Finds item by PK
     const item = await Item.findByPk(id);
 
+    // Sequelize magic method to link the item to the user in the db
     user.addItems(item);
 
     res.send(200);
@@ -151,6 +155,7 @@ app.delete("/items/:id/user/:email/cart", async (req, res, next) => {
   const id = req.params.id;
   const email = req.params.email;
 
+  // Finds user by email
   const user = await User.findOne({
     where: {
       email: email,
@@ -159,8 +164,8 @@ app.delete("/items/:id/user/:email/cart", async (req, res, next) => {
 
   const item = await Item.findByPk(id);
 
+  // Sequelize magic method to remove the item from the user in the db
   user.removeItems(item);
-  console.log("REMOVED");
   res.send(200);
 });
 
