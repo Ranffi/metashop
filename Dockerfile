@@ -13,13 +13,13 @@ COPY package-lock.json package-lock.json
 # specify test build
 FROM base as prod
 # clean dependancy install excluding dev dependancies
-RUN npm ci --production
+RUN npm install
 # copy files to image
 COPY . .
 #expose the port in the docker container
-EXPOSE 3000
+EXPOSE 3001
 # the command to start our app
-CMD [ "npm", "start" ]
+CMD [ "npm", "start"]
 
 # docker build -t metashop --target prod .
 # docker run -p 3000:3000 metashop
